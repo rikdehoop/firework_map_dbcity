@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <title>Vuurwerkvrije zones Den Bosch</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Leaflet CSS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+
+  <style>
+    #map {
+      height: 100vh;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+  // Kaart initialiseren
+  const map = L.map('map').setView([51.6978, 5.3037], 12);
+
+  // OpenStreetMap laag
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  const locations = [
+    { name: "Dierentehuis 's-Hertogenbosch", coords: [51.691669, 5.347227] },
+    { name: "Stichting Goedland", coords: [51.7029, 5.2583] },
+    { name: "Kinderboerderij 't Heike", coords: [51.678, 5.333] },
+    { name: "Kinderboerderij Oosterhoeve", coords: [51.688, 5.297] },
+    { name: "Dierenpark Engelen", coords: [51.725, 5.320] },
+    { name: "Dierenpark de Saren", coords: [51.710, 5.290] },
+    { name: "Stichting Ekartweide", coords: [51.700, 5.320] },
+    { name: "Dierenpark Prins Hendrik", coords: [51.714, 5.315] },
+    { name: "Dierenpark Ploossche Hof", coords: [51.703, 5.303] },
+    { name: "Dierenpark Orthen", coords: [51.689, 5.313] },
+    { name: "Dierenweide Geitenbrij", coords: [51.686, 5.307] },
+    { name: "Dierenpark Zuiderpark", coords: [51.695, 5.305] },
+    { name: "Kinderboerderij 't Veldje", coords: [51.693, 5.293] },
+    { name: "Dierenpark Rompert", coords: [51.688, 5.310] },
+    { name: "Dierenpark Maliskamp", coords: [51.702, 5.320] },
+    { name: "Kinderboerderij De Beestenboel", coords: [51.687, 5.306] },
+    { name: "Dierenweide ’t Wikkie", coords: [51.716, 5.310] },
+    { name: "Van Neynselgroep de Grevelingen", coords: [51.696, 5.311] },
+    { name: "Jeroen Bosch Ziekenhuis", coords: [51.690, 5.289] },
+    { name: "Sint Jozefoord", coords: [51.678, 5.334] }
+  ];
+
+  locations.forEach(loc => {
+    L.marker(loc.coords)
+      .addTo(map)
+      .bindPopup(`<strong>${loc.name}</strong>`);
+  });
+</script>
+
+</body>
+</html>
